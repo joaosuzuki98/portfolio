@@ -94,7 +94,7 @@ const About = () => {
 							</div>
 							<div>
 								<p className="font-medium">{getTranslation(language, "about.email")}</p>
-								<p className={retro && isDark ? "text-gray-300" : "text-muted-foreground"}>joaosuzuki98@outlook.com</p>
+								<p className={`break-words ${retro && isDark ? "text-gray-300" : "text-muted-foreground"}`}>joaosuzuki98@outlook.com</p>
 							</div>
 							<div>
 								<p className="font-medium">{getTranslation(language, "about.location")}</p>
