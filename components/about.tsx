@@ -43,7 +43,7 @@ const About = () => {
 								<img
 									src="/profile_photo.png"
 									alt="Profile Photo"
-									className={`w-[40%] h-full object-fill mx-auto ${retro ? "filter contrast-125 brightness-110" : ""}`}
+									className={`w-[260px] h-full object-fill mx-auto ${retro ? "filter contrast-125 brightness-110" : ""}`}
 									width={600}
 									height={800}
 								/>
