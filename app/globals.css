@@ -1,26 +1,322 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.1 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --ring: 222.1 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.9%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    --ring: 217.2 91.2% 59.8%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Retro Mode Styles - Light Theme */
+.retro-mode {
+  --background: 180 75% 90%;
+  --foreground: 0 0% 0%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+
+  --primary: 270 60% 50%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 180 75% 60%;
+  --secondary-foreground: 0 0% 0%;
+
+  --muted: 0 0% 80%;
+  --muted-foreground: 0 0% 40%;
+
+  --accent: 330 90% 65%;
+  --accent-foreground: 0 0% 100%;
+
+  --border: 0 0% 0%;
+  --input: 0 0% 100%;
+
+  --radius: 0;
+}
+
+/* Retro Mode Styles - Dark Theme */
+.retro-mode.retro-dark {
+  --background: 270 50% 15%;
+  --foreground: 180 100% 80%;
+
+  --card: 270 50% 20%;
+  --card-foreground: 180 100% 80%;
+
+  --primary: 180 100% 50%;
+  --primary-foreground: 270 50% 15%;
+
+  --secondary: 330 80% 60%;
+  --secondary-foreground: 0 0% 0%;
+
+  --muted: 270 30% 30%;
+  --muted-foreground: 180 60% 70%;
+
+  --accent: 60 80% 60%;
+  --accent-foreground: 0 0% 0%;
+
+  --border: 180 100% 50%;
+  --input: 270 50% 25%;
+}
+
+/* Common Retro Styles */
+.retro-mode * {
+  border-radius: 0 !important;
+}
+
+.retro-mode h1,
+.retro-mode h2,
+.retro-mode h3,
+.retro-mode h4 {
+  letter-spacing: 1px;
+}
+
+.retro-mode button {
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+
+/* Section dividers */
+.retro-mode section {
+  position: relative;
+}
+
+.retro-mode section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  z-index: 10;
+}
+
+.retro-mode:not(.retro-dark) section::after {
+  background: repeating-linear-gradient(45deg, #000, #000 10px, #ff00ff 10px, #ff00ff 20px);
+}
+
+.retro-dark section::after {
+  background: repeating-linear-gradient(45deg, #06b6d4, #06b6d4 10px, #d946ef 10px, #d946ef 20px);
+}
+
+/* Cards styling */
+.retro-mode .card,
+.retro-mode [class*="rounded"] {
+  border-radius: 0 !important;
+}
+
+.retro-mode:not(.retro-dark) .bg-card {
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 1);
+}
+
+.retro-dark .bg-card {
+  background-color: #2d1b69;
+  border: 2px solid #06b6d4;
+  box-shadow: 4px 4px 0 0 rgba(6, 182, 212, 0.5);
+}
+
+/* Skills section */
+.retro-mode:not(.retro-dark) #skills [class*="bg-gradient-to"] {
+  background: white !important;
+  border: 2px solid black;
+}
+
+.retro-dark #skills [class*="bg-gradient-to"] {
+  background: #2d1b69 !important;
+  border: 2px solid #06b6d4;
+}
+
+/* Projects section */
+.retro-mode:not(.retro-dark) #projects .rounded-lg {
+  border: 2px solid black;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 1);
+}
+
+.retro-dark #projects .rounded-lg {
+  border: 2px solid #06b6d4;
+  box-shadow: 4px 4px 0 0 rgba(6, 182, 212, 0.5);
+}
+
+/* Education timeline */
+.retro-mode:not(.retro-dark) #education .bg-border {
+  background-color: black;
+}
+
+.retro-dark #education .bg-border {
+  background-color: #06b6d4;
+}
+
+.retro-mode:not(.retro-dark) #education .border-primary {
+  border-color: black;
+}
+
+.retro-dark #education .border-primary {
+  border-color: #06b6d4;
+}
+
+/* Contact form */
+.retro-mode:not(.retro-dark) #contact input,
+.retro-mode:not(.retro-dark) #contact textarea {
+  border: 2px solid black;
+  background-color: white;
+}
+
+.retro-dark #contact input,
+.retro-dark #contact textarea {
+  border: 2px solid #06b6d4;
+  background-color: #2d1b69;
+  color: white;
+}
+
+/* Header */
+.retro-mode header {
+  border-bottom: 2px solid;
+}
+
+.retro-mode:not(.retro-dark) header {
+  border-color: black;
+  background-color: white !important;
+}
+
+.retro-dark header {
+  border-color: #06b6d4;
+  background-color: #2d1b69 !important;
+}
+
+/* Footer */
+.retro-mode:not(.retro-dark) footer {
+  background-color: black !important;
+  color: white !important;
+}
+
+.retro-dark footer {
+  background-color: #1e1256 !important;
+  color: #06b6d4 !important;
+}
+
+.retro-mode footer p {
+  color: inherit !important;
+}
+
+/* Pixelated images in retro mode */
+.retro-mode img:not([class*="rounded-full"]) {
+  image-rendering: pixelated;
+  filter: contrast(1.1) brightness(1.1);
+}
+
+@layer utilities {
+  .animate-gradient {
+    @apply animate-gradient-bg;
+  }
+  .animate-gradient-bg {
+    animation: gradient-bg 10s ease infinite;
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-in-out forwards;
+  }
+  .animate-blink {
+    animation: blink 1s steps(5, start) infinite;
+  }
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
 }
